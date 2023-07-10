@@ -11,7 +11,7 @@ public class CabInvoiceGeneratorTest {
     public void TotalFare(){
         double distance=2.0;
         int time=5;
-        double result=cabInvoiceGenerator.calculateFare(distance,time);
+        double result=cabInvoiceGenerator.calculatefare(distance,time);
         Assert.assertEquals(25.0,result,0);
     }
 
