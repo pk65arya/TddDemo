@@ -35,7 +35,6 @@ public class CabInvoiceGeneratorTest {
         Invoice expectedInvoice = new Invoice(2, 355.1, 177.55);
         Assertions.assertEquals(expectedInvoice, actualInvoice);
     }
-
     @Test
     public void givenMultipleRidesShould_ReturnInvoice_ForNormalAndPremiumRides() {
         Ride[] rides = {new Ride(12, 3, "Normal"), new Ride(13.4, 4, "Premium"), new Ride(17, 8, "Premium")};
