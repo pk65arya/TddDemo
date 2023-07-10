@@ -8,7 +8,7 @@ public class CabInvoiceGenerator {
  public static final double PREMIUM_FARE_PER_MINUTE=2;
  public static final double PREMIUM_MINIMUM_FARE=20;
 
- public static double calculatefare(double distance,int time){
+ public static double calculateFare(double distance,int time){
      double totalValue=(distance*costperkm)+(time*costpermin);
      if (totalValue<5){
       return min_fare;
@@ -23,10 +23,10 @@ public class CabInvoiceGenerator {
             return totalFare;
     }
 
-    public double calculatefare(Ride[] rides) {
+    public double calculatetotalfare(Ride[] rides) {
         double aggregateFare = 0;
         for (Ride ride : rides) {
-            double totalFare = calculatefare(ride.distance, (int) ride.time);
+            double totalFare = calculateFare(ride.distance, (int) ride.time);
             aggregateFare += totalFare;
         }
         return aggregateFare;
@@ -41,7 +41,7 @@ public class CabInvoiceGenerator {
     }
     public Invoice getInvoiceOfRides(Ride[] rides) {
         int numberOfRides = rides.length;
-        double totalFare = calculatefare(rides);
+        double totalFare = calculatetotalfare(rides);
         double averageRideFare = totalFare / numberOfRides;
         return new Invoice(numberOfRides, totalFare, averageRideFare);
     }
@@ -55,7 +55,7 @@ public class CabInvoiceGenerator {
         double totalFare = 0;
         for (Ride ride : rides) {
             if (ride.ridetype.equals("Normal")) {
-                totalFare += calculatefare(ride.distance, (int) ride.time);
+                totalFare += calculateFare(ride.distance, (int) ride.time);
             } else if (ride.ridetype.equals("Premium")) {
                 totalFare += getTotalFareForPremiumRides(ride.distance, ride.time);
             }
